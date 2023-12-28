@@ -1,0 +1,97 @@
+/* /css/employee.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #495057;
+    transition: background-color 0.3s ease;
+  }
+  
+  h3 {
+    color: #007bff;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  #user-name-container {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  #performanceReviewContainer {
+    margin: 20px;
+    padding: 11px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  #pendingForReview {
+    margin-top: 30px;
+  }
+  
+  #pendingForReview li {
+    list-style: none;
+    margin-bottom: 30px;
+    padding: 12px;
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  
+  #pendingForReview li:hover {
+    transform: scale(1.002);
+  }
+  
+  form {
+    margin-top: 30px;
+    /* display: flex; */
+    flex-direction: column;
+  }
+  
+  input[type="text"] , textarea{
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus {
+    border-color: #007bff;
+  }
+  
+  input[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    padding: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #218838;
+  }
+  
+  p {
+    text-align: center;
+    color: #6c757d;
+    margin-top: 30px;
+  }
+  

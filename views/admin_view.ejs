@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="./css/admin_view.css">
+<h2 >Admin Dashboard</h2>
+
+
+<div class="container">
+	<div class="row">
+		<% for(emp of employees){ %>
+			<div class="col-2">
+				<a class="user-names" href="/admin/<%=emp.id%>"><%= emp.name %></a>
+
+				<a class="make-admin" href="/admin/addAdmin/<%=emp.id%>">Make Admin</a>
+			</div>
+		<%} %>
+	</div>
+</div>
+
+

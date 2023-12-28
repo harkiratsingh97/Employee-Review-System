@@ -1,13 +1,12 @@
 let express = require("express");
 let router = express.Router();
 
-router.use("/", require("./admin"));
+router.use("/", require("./home"));
 router.use("/employee", require("./employee"));
+router.use("/admin", require("./admin"));
+router.use("/review", require("./review"));
 
-router.get("/", (req, res) => {
-	return res.json(200, {
-		message: "yes",
-	});
-});
+
+
 
 module.exports = router;

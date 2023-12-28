@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="/css/employee.css" />
+<style>
+	.checked {
+		color: orange;
+	}
+</style>
+
+<h3>Employee dashboard</h3>
+<div id="user-name-container"><%=user.name%></div>
+
+<div id="performanceReviewContainer" class="row">
+	<%if(pendingForReview[0]){%>
+	<h3>Pending for your Review</h3>
+	<div id="pendingForReview" class="col-6">
+		<%for(review of pendingForReview){%>
+		<li
+			id="user<%=review.to_user.id%>"
+			onclick="setChosenUser('<%=review.to_user.id%>')"
+		>
+			<%=review.to_user.name%>
+		</li>
+
+		<%}%>
+	</div>
+	<div class="col-6">
+		<form id="create-review" action="/review/createReview" method="post">
+			<input type="hidden" id="star-rating" name="rating" value="0" />
+			<input type="hidden" name="from_user" value="<%=user.id%>" />
+			<input type="hidden" name="to_user" value="<%=userSelected%>" />
+			<%for(let i=0;i<5; i++){%>
+			<span
+				class="fa fa-star"
+				id="star<%=i+1%>"
+				onclick="addStarRating('<%=i+1%>')"
+			></span>
+			<%}%>
+			<textarea type="text" name="review"></textarea>
+			<input type="submit" />
+		</form>
+	</div>
+	<%} else{%>
+	<p>Nothing is pending from your end</p>
+	<%}%>
+</div>
+
+<script>
+	var userSelected = "undefined";
+	function setChosenUser(chosenUser) {
+		console.log(chosenUser);
+		userSelected = chosenUser;
+		let li = "user" + chosenUser;
+		li = document.getElementById(li);
+		for (let child of li.parentNode.children) {
+			child.style.border = "0px";
+		}
+
+		li.style.border = "1px solid black";
+	}
+
+	let createReview = function () {
+		let createReview = $("#create-review");
+		console.log(userSelected);
+		createReview.submit(function (e) {
+			e.preventDefault();
+			console.log(userSelected);
+
+			createReview[0][2].value = userSelected;
+
+			$.ajax({
+				type: "post",
+				url: "/review/createReview",
+				data: createReview.serialize(),
+				success: function (data) {
+					window.location.href = window.location.href;
+				},
+			});
+		});
+	};
+	createReview();
+</script>
+
+<script type="text/javascript" src="/js/rating.js"></script>

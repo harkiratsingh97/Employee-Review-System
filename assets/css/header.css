@@ -1,0 +1,20 @@
+#main-heading {
+	text-align: center;
+	margin: 15px;
+    font-size: 1.3rem;
+	font-family: muli-semibold;
+	font-weight: 600;
+}
+
+#logout-button {
+	position: absolute;
+	right: 1vw;
+	top: 20px;
+	background-color: black;
+	border-radius: 15px;
+	padding: 3px 13px;
+	color: white;
+    font-weight: 500;
+    text-decoration: none;
+    
+}

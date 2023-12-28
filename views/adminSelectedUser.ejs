@@ -1,0 +1,86 @@
+<link rel="stylesheet" href="/css/adminSelectedUser.css" />
+
+<a style="color: 007bff; font-size: 2rem;font-weight: 500;" href="/admin" class="ml-3">Admin Dashboard</a>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 col-l-6 col-xl-6 col-sm-12 col-xs-12">
+			<div class="review-and-rating-container">
+				<h3 style="display: inline;">Reviews</h3>
+				<p style="font-size: 20px; display: inline;">
+					<span class="stars"><%=reviews.rating%></span>
+				</p>
+			</div>
+			
+			<div class="reviews-container">
+				<div id="feedbacksOfUser">
+					<%for(review of reviews){%> <%if(review.review) {%>
+					<li><%=review.review%> <sub>by <%=review.from_user.name %></sub></li>
+					<%}%> <%}%>
+				</div>
+			</div>
+
+			<h3>Submit new review</h3>
+			
+			<form id="submit-review-admin" action="/review/createReview" method="post">
+				<input type="hidden" name="to_user" value="<%=employee.id%>" />
+				<input type="hidden" name="from_user" value="<%=locals.user.id%>" />
+				<input type="hidden" id="star-rating" name="rating" value="0">
+				<%for(let i=0;i<5; i++){%>
+					<span class="fa fa-star"   id="star<%=i+1%>" onclick="addStarRating('<%=i+1%>')"></span>
+				<%}%>
+				<textarea type="text" name="review" ></textarea>
+				<input type="submit" />
+			</form>
+		</div>
+		<div class="col-md-6 col-l-6 col-xl-6 col-sm-12 col-xs-12">
+			<div id="update-details-div" class="row justify-content-center">
+				<div class="col-7 ">
+					<h3 class="mb-5">Update details of Employee</h3>
+					<form action="/employee/update" method="post">
+						<input type="hidden" name="id" value="<%=employee.id%>" />
+						<input type="text" name="name" value="<%=employee.name%>" />
+						<input type="email" name="email" value="<%=employee.email%>" />
+						<input type="submit" value="Update" />
+					</form>
+					<a style="text-align:center;" href="/employee/deleteUser/<%=employee.id%>">Delete User</a>
+				</div>
+			</div>
+			<div class="row mt-3">
+				<div id="feedbackContainer " class="row">
+					<div id="possible-users-for-feedback" class="col-6">
+						<h4 style="text-align: center;">Remaining users</h3>
+						<ul id="possible-for-feedback">
+							<%for(emp of employees){%>
+							<li id="possible<%=emp.id%>"><%=emp.name%> <button
+								value="emp.id"
+								onclick="addForReview('<%=employee.id%>','<%=emp.id%>')"
+							>
+								Add							</button></li>
+							
+							<%}%>
+						</ul>
+					</div>
+					<!-- <h3>break</h3> -->
+					<div id="users-for-feedback" class=" col-6">
+						<h4 style="text-align: center;">User for feedback</h4>
+						<ul id="feedback-givers" style="list-style: none;">
+							<%for(emp of employeesForFeedback) {%>
+							<li id="reviewer<%=emp.from_user.id%>"><%=emp.from_user.name%> <button
+								value="emp.id"
+								onclick="removeFromReview('<%=employee.id%>','<%=emp.from_user.id%>')"
+							>
+								Remove
+							</button></li>
+							
+							<%}%>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/js/admin.js"></script>
+<script type="text/javascript" src="/js/rating.js"></script>
+
