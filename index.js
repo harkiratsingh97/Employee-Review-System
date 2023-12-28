@@ -3,6 +3,7 @@ let PORT = "8080";
 let app = express();
 var bodyParser = require("body-parser");
 let db = require("./config/mongoose.js");
+let env = require('./config/environment.js')
 let expressLayouts = require("express-ejs-layouts");
 
 const session = require("express-session");
@@ -10,6 +11,7 @@ const passport = require("passport");
 const pasportLocal = require("./config/passport-local-strategy");
 
 const MongoStore = require("connect-mongo");
+const { eventNames } = require("./models/review.js");
 
 app.use(expressLayouts);
 
@@ -27,7 +29,7 @@ app.use(
 		secret: "employee",
 		store: MongoStore.create(
 			{
-				mongoUrl: "mongodb://127.0.0.1:27017/EmployeeReviewSystem",
+				mongoUrl: env.db,
 				autoRemove: "disabled",
 			},
 			function (err) {
