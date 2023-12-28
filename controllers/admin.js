@@ -57,7 +57,7 @@ module.exports.selectedUser = async function (req, res) {
 
 module.exports.addAdmin = async function (req, res) {
 	try {
-		console.log(req.params.id);
+		
 		let addedAdmin = await Employee.findByIdAndUpdate(req.params.id, {
 			admin: true,
 		});

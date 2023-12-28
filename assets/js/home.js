@@ -11,9 +11,7 @@
 				data: newUserForm.serialize(),
 				success: function (data) {
 					// JWT = data.token;
-					if (data.status == 400) {
-						console.log("already here");
-					}
+
 					window.location.href = "/sign-in";
 				},
 			});

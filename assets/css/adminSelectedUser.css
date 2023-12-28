@@ -14,6 +14,9 @@ body {
 	overflow: hidden;
 }
 
+.all-continer h3{
+  font-size: 1.4rem;
+}
 .row {
 	display: flex;
 	justify-content: space-between;
@@ -30,7 +33,7 @@ body {
 	overflow: hidden;
 }
 
-h3 {
+h2 {
 	color: #007bff;
 }
 
@@ -139,7 +142,7 @@ a:hover {
 #users-for-feedback {
 	/* flex: 0 0 48%; */
 	/* max-width: 48%; */
-  max-height: 35vh;
+  max-height: 33vh;
 	padding: 20px;
 	background-color: #ffffff;
 	border-radius: 10px;

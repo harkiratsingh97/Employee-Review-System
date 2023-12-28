@@ -1,7 +1,13 @@
 .user-names{
-    font-size: 1.7rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-decoration: none;
 }
 .make-admin{
     margin-left: 6px;
     font-size: 0.7rem;
+}
+h2{
+    
+    margin-left:35px
 }

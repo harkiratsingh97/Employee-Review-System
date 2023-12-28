@@ -19,10 +19,6 @@ const employeeSchema = new mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
-		// feedbackRequired: {
-		// 	type: [],
-		// 	ref: "Employee",
-		// },
 	},
 	{
 		timestamps: true,

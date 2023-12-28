@@ -4,7 +4,7 @@ let Review = require("../models/review");
 
 module.exports.createNewReview = async function (req, res) {
 	try {
-		console.log(req.body);
+		
 		if (req.body.to_user == "undefined") {
 			return res.redirect("back");
 		}
@@ -12,7 +12,7 @@ module.exports.createNewReview = async function (req, res) {
 			to_user: req.body.to_user,
 			from_user: req.body.from_user,
 		});
-		console.log(reviewThere);
+		
 		if (reviewThere.length) {
 			await Review.findOneAndUpdate(
 				{ to_user: req.body.to_user, from_user: req.body.from_user },
@@ -23,7 +23,7 @@ module.exports.createNewReview = async function (req, res) {
 		}
 		const newReview = await Review.create(req.body);
 		if (newReview) {
-			console.log(newReview)
+			
 			return res.redirect("back");
 		} else {
 			return res.json(400, {

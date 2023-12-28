@@ -7,4 +7,4 @@ let development = {
 let production = {
 	db: process.env.db,
 };
-module.exports = production;
+module.exports = development;

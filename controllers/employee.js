@@ -31,7 +31,6 @@ module.exports.employeeDashboard = async function (req, res) {
 		from_user: req.user.id,
 		review: undefined,
 	}).populate("to_user");
-	// console.log(reviewByUser);
 
 	return res.render("employee_view.ejs", {
 		title: "Employee Dashboard",
@@ -86,8 +85,7 @@ module.exports.addForReview = async function (req, res) {
 			from_user: req.query.idToAdd,
 			to_user: req.query.id,
 		}).populate("from_user");
-		// newReview.populate("from_user");
-		console.log(newReview);
+
 		return res.json(200, {
 			message: "Added successfully",
 			data: newReview,
@@ -100,16 +98,11 @@ module.exports.addForReview = async function (req, res) {
 
 module.exports.removeFromReview = async function (req, res) {
 	try {
-		// let updateEmployee = await Employee.findByIdAndUpdate(req.query.id, {
-		// 	$pull: { feedbackRequired: req.query.idToRemove },
-		// });
-		console.log(req.query.idToRemove, req.query.id);
 		let deletedReview = await Reviews.findOneAndDelete({
 			from_user: req.query.idToRemove,
 			to_user: req.query.id,
 		}).populate("from_user");
 
-		console.log(deletedReview);
 		return res.json(200, {
 			message: "Added successfully",
 			data: deletedReview,

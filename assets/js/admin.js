@@ -16,7 +16,7 @@ function addForReview(id, idToAdd) {
 			feedbackUsersDive.appendChild(newItem);
 		},
 		error: function (error) {
-			console.log(error.responseText);
+			
 		},
 	});
 }
@@ -41,7 +41,7 @@ function removeFromReview(to_user, from_user) {
 			reviewDiv.appendChild(newItem);
 		},
 		error: function (error) {
-			console.log(error.responseText);
+			
 		},
 	});
 }
