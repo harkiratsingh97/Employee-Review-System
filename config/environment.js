@@ -10,4 +10,4 @@ let production = {
 	db: process.env.db,
 };
 
-module.exports = development;
+module.exports = production;
