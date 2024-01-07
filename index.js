@@ -1,3 +1,4 @@
+
 let express = require("express");
 let PORT = "8080";
 let app = express();
@@ -10,19 +11,22 @@ const session = require("express-session");
 const passport = require("passport");
 const pasportLocal = require("./config/passport-local-strategy");
 
+//Requiring Mongostore to store sessions
 const MongoStore = require("connect-mongo");
 const { eventNames } = require("./models/review.js");
 
+//Settings up Layouts
 app.use(expressLayouts);
-
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//Setting up statics
 app.use(express.static("assets"));
 
 // Setup the view engine
 app.set("view engine", "ejs");
 app.set("views", "./views");
-console.log(db);
+
+//Setting up Mongo Store to store sessions
 app.use(
 	session({
 		name: "employee",
@@ -45,18 +49,19 @@ app.use(
 	})
 );
 
+// Using passport for Auth and setting up current user
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
-// extract style and scripts from sub pages into the layout
+// Extract style and scripts from sub pages into the layout
 app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);
 
-app.use(passport.setAuthenticatedUser);
-
+// Routing to routes
 app.use("/", require("./routes/index.js"));
 
+//Listening to Express server on given PORT
 app.listen(PORT, (err) => {
 	if (err) {
 		console.log("Error in starting express server ", err);

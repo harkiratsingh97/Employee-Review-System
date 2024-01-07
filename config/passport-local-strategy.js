@@ -4,7 +4,7 @@ const LocalStrategy = require("passport-local").Strategy;
 
 const Employee = require("../models/employee");
 
-//authentication using passport
+//Authentication using passport
 passport.use(
 	new LocalStrategy(
 		{
@@ -17,13 +17,11 @@ passport.use(
 				const employee = await Employee.findOne({ email: email });
 
 				if (!employee || employee.password != password) {
-					// req.flash('error', 'Invalid Username/Password');
 					return done(null, false);
 				}
 
 				return done(null, employee);
 			} catch (err) {
-				// req.flash('error', err);
 				return done(err);
 			}
 		}

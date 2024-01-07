@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 let Review = require("../models/review");
-// const Employee = require("../models/employee");
 
+//Function to Create a nee review if doesn't already exist
 module.exports.createNewReview = async function (req, res) {
 	try {
 		
@@ -19,7 +19,6 @@ module.exports.createNewReview = async function (req, res) {
 				{ review: req.body.review, rating: req.body.rating }
 			);
 			return res.redirect("back");
-			// const updatedReview = await findOneAndReplace(reviewThere);
 		}
 		const newReview = await Review.create(req.body);
 		if (newReview) {
@@ -37,6 +36,7 @@ module.exports.createNewReview = async function (req, res) {
 	}
 };
 
+//Function to update a Review
 module.exports.updateReview = async function (req, res) {
 	try {
 		let updatedReview = await Review.findByIdAndUpdate(req.params.id, req.body);

@@ -1,3 +1,4 @@
+//Function to render Sign up page
 module.exports.signUpPage = function (req, res) {
 	return res.render("sign_up.ejs", {
 		title: "title",
@@ -5,6 +6,7 @@ module.exports.signUpPage = function (req, res) {
 	});
 };
 
+//Function to render Sign in page
 module.exports.signInPage = function (req, res) {
 	return res.render("sign_in.ejs", {
 		title: "title",

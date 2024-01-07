@@ -46,7 +46,6 @@ module.exports.selectedUser = async function (req, res) {
 			employeesForFeedback: employeesForFeedback,
 			employees: arr,
 			reviews: req.reviews,
-
 			user: res.locals.user,
 		});
 	} catch (err) {
@@ -55,6 +54,7 @@ module.exports.selectedUser = async function (req, res) {
 	}
 };
 
+//Function to add an Employee as Admin
 module.exports.addAdmin = async function (req, res) {
 	try {
 		

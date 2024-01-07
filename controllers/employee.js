@@ -1,5 +1,6 @@
 let Employee = require("../models/employee");
 let Reviews = require("../models/review");
+
 //Registration of new Employee
 module.exports.createEmployee = async function (req, res) {
 	try {
@@ -22,10 +23,12 @@ module.exports.createEmployee = async function (req, res) {
 	}
 };
 
+//Log in for Employee/Admin
 module.exports.loginUser = async function (req, res) {
 	return res.redirect("/employee");
 };
 
+//Function to render Employee Dashboard
 module.exports.employeeDashboard = async function (req, res) {
 	const reviewByUser = await Reviews.find({
 		from_user: req.user.id,
@@ -42,6 +45,7 @@ module.exports.employeeDashboard = async function (req, res) {
 	});
 };
 
+//Function to update details of an Employee
 module.exports.updateEmployee = async function (req, res) {
 	try {
 		let updatedEmployee = await Employee.findByIdAndUpdate(
@@ -55,6 +59,7 @@ module.exports.updateEmployee = async function (req, res) {
 	}
 };
 
+//Function to delete an Employee
 module.exports.deleteUser = async function (req, res) {
 	try {
 		let deletedEmployee = await Employee.findByIdAndDelete(req.params.id);
@@ -72,11 +77,9 @@ module.exports.deleteUser = async function (req, res) {
 	}
 };
 
+//Function to add a User in other User's review
 module.exports.addForReview = async function (req, res) {
 	try {
-		// let updateEmployee = await Employee.findByIdAndUpdate(req.query.id, {
-		// 	$push: { feedbackRequired: req.query.idToAdd },
-		// });
 		let newReview = await Reviews.create({
 			from_user: req.query.idToAdd,
 			to_user: req.query.id,
@@ -96,6 +99,7 @@ module.exports.addForReview = async function (req, res) {
 	}
 };
 
+//Function to remove a User in other User's review
 module.exports.removeFromReview = async function (req, res) {
 	try {
 		let deletedReview = await Reviews.findOneAndDelete({
